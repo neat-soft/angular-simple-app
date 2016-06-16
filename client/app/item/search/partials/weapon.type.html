@@ -1,0 +1,99 @@
+<div class="search-facet-panel__header--start startrack">
+	<div class="checkbox ">
+		<label class="ng-binding stra">
+		  <input type="checkbox" ng-model="vm.quality.selected" ng-change="vm.searchByQuality('StatTrak™')">StatTrak™
+		</label>
+	</div>
+</div>
+<div class="search-facet--no-margin">
+  <div class="js-search-facet-panel__header search-facet-panel__header--start">
+    <h2 class="widget-header" data-title="Tags"><i class="e-icon -icon-tag -margin-right"></i>Weapon Type</h2>
+
+    <uib-accordion close-others="true">
+      <uib-accordion-group>
+        <uib-accordion-heading><img src="assets/images/weapon-icons/knife/bayonet.png" /> Knife</uib-accordion-heading>
+        <uib-accordion-transclude>
+          <div ng-repeat="knife in vm.knives">
+            <label>
+              <input type="checkbox" name="{{knife.name}}" ng-model="knife.selected" ng-change="vm.buildStateParameters('weapon', 'knives')">{{knife.name}}
+
+            </label>
+          </div>
+        </uib-accordion-transclude>
+      </uib-accordion-group>
+
+      <uib-accordion-group>
+        <uib-accordion-heading><img src="assets/images/weapon-icons/pistols/Glock18.png" /> Pistol</uib-accordion-heading>
+        <uib-accordion-transclude>
+        <div ng-repeat="pistol in vm.pistols" class="ng-scope">
+        </div>
+
+          <div ng-repeat="pistol in vm.pistols">
+            <label>
+              <input type="checkbox" name="{{pistol.name}}" ng-model="pistol.selected" ng-change="vm.buildStateParameters('weapon', 'pistols')">{{pistol.name}}
+
+            </label>
+          </div>
+        </uib-accordion-transclude>
+      </uib-accordion-group>
+
+      <uib-accordion-group>
+        <uib-accordion-heading><img src="assets/images/weapon-icons/rifle/AK-47.png" /> Rifles</uib-accordion-heading>
+        <uib-accordion-transclude>
+          <div ng-repeat="rifle in vm.rifles">
+            <label>
+              <input type="checkbox" name="{{rifle.name}}" ng-model="rifle.selected" ng-change="vm.buildStateParameters('weapon', 'rifles')">{{rifle.name}}
+
+            </label>
+          </div>
+        </uib-accordion-transclude>
+      </uib-accordion-group>
+
+      <uib-accordion-group>
+        <uib-accordion-heading>
+          <img src="assets/images/weapon-icons/heavy/M249.png" /> Heavy
+        </uib-accordion-heading>
+        <uib-accordion-transclude>
+          <div ng-repeat="heavy in vm.heavies">
+            <label>
+              <input type="checkbox" name="{{heavy.name}}" ng-model="heavy.selected" ng-change="vm.buildStateParameters('weapon', 'heavies')">{{heavy.name}}
+
+            </label>
+          </div>
+        </uib-accordion-transclude>
+      </uib-accordion-group>
+
+      <uib-accordion-group>
+        <uib-accordion-heading><img src="assets/images/weapon-icons/smg/P90.png" /> SMGs</uib-accordion-heading>
+        <uib-accordion-transclude>
+          <div ng-repeat="smg in vm.smgs">
+            <label>
+              <input type="checkbox" name="{{smg.name}}" ng-model="smg.selected" ng-change="vm.buildStateParameters('weapon', 'smgs')">{{smg.name}}
+
+            </label>
+          </div>
+        </uib-accordion-transclude>
+      </uib-accordion-group>
+
+      <uib-accordion-group>
+        <uib-accordion-heading><img src="assets/images/weapon-icons/cases/8.png" /> Cases</uib-accordion-heading>
+        <uib-accordion-transclude>
+          <div ng-repeat="container in vm.containers">
+            <label>
+              <input type="checkbox" name="{{container.name}}" ng-model="container.selected" ng-change="vm.buildStateParameters('itemSet', 'containers')">{{container.name}}
+
+            </label>
+          </div>
+        </uib-accordion-transclude>
+      </uib-accordion-group>
+
+      <uib-accordion-group>
+        <uib-accordion-heading><img src="assets/images/weapon-icons/key.png" /> Keys</uib-accordion-heading>
+        <uib-accordion-transclude>
+
+        </uib-accordion-transclude>
+      </uib-accordion-group>
+
+    </uib-accordion>
+  </div>
+</div>

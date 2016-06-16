@@ -1,0 +1,9 @@
+<ul ng-hide="vm.isLoading" class="items tab-pane active" role="tabpanel" aria-labelledby="selling-item">
+	<spinner ng-show="vm.isLoading"></spinner>
+	<div ng-if="!vm.items || vm.items.length === 0" class="alert alert-warning ng-scope">
+  		<p>Sorry, there are currently no skins matching your search :(</p>
+	</div>
+  <li ng-repeat="item in vm.items">
+    <sw-item item="item"></sw-item>
+  </li>
+</ul>

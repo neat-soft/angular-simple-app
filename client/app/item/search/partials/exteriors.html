@@ -1,0 +1,17 @@
+<div class="search-facet--no-margin exterior-s">
+  <div class="js-search-facet-panel__header search-facet-panel__header--start">
+    <h2 class="widget-header" data-title="Tags"><i class="e-icon -icon-tag -margin-right"></i>Exterior</h2>
+    <ul class="search-facet-multi-select--inside-box-disabled" ng-repeat="exterior in vm.exteriors">
+      <li class="search-facet-multi-select__option">
+        <div class="search-facet-multi-select__link">
+          <div class="checkbox search-facet-multi-select__label {{exterior.name}}">
+            <label>
+              <input type="checkbox" ng-model="exterior.selected" ng-change="vm.buildStateParameters('exterior', 'exteriors')">{{exterior.name}}
+            </label>
+          </div>
+        </div>
+        </li>
+      </li>
+    </ul>
+  </div>
+</div>

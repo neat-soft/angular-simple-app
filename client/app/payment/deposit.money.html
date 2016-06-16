@@ -1,0 +1,62 @@
+<div class="context-header container">
+  <h1>Deposit Cash</h1>
+</div>
+<div class="main-wrapper deposit">
+  <div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+      <form id="form" name="form" method="post">
+        <div class="col-md-9  ">
+          <div class="alert alert-info"> Please note that UNVERIFIED Paypal accounts
+            won't be able to use deposited money until they don't verify their Paypal account.</div>
+          <div class="deposit-cash-cont">
+            <h2>How Much Prepaid Credit Do You Want To Deposit?</h2>
+            <h4>Deposits are in US$, are non-refundable and will expire one year from your last deposit. </h4>
+
+            <ul class="payment-opt">
+              <li ng-repeat="upload in uploadValues" ng-click="select($index)">
+                <a href="#" ng-class="{active: $index === selectedValue}">&dollar;{{upload.value}}</a>
+              </li>
+            </ul>
+
+            <input type="hidden" name="amount" ng-value="selectedAmount">
+
+            <div class="clear"></div>
+          </div>
+          <div class="deposit-payment-cont">
+            <h2>How Do You Want To Pay?</h2>
+
+            <div class="divider"></div>
+            <div class="accept_tos_dep"><input type="checkbox" ng-model="isTermsAccepted" id="csgo_tos"> I have read and agree to the <a ui-sref="terms">Terms & Conditions</a>, and I am at least 18 years old.</div>
+
+            <div class="paypal-payment-type">
+              <img src="assets/images/paypal.png"/>
+              <button class="button" ng-click="makeDeposit()" ng-disabled="!isTermsAccepted || isRequestPending ">Make Deposit $</button>
+              <span>You will be transferred to a secure PayPal page. After payment your cash will display in the top panel.</span>
+            </div>
+            <!--
+            <div class="divider"></div>
+
+            <div class="skrill-payment-type">
+              <img src="assets/images/skrill.jpg"/>
+              <a href="#" class="button">Make Deposit $</a>
+              <span>You will be transferred to a secure Skrill page. After payment your cash will display in the top panel.</span>
+            </div>
+            -->
+          </div>
+        </div>
+      </form>
+
+      <div class="col-md-3 ">
+        <div class="widget current-c-dpage">
+          <h3>Current Credit Balance</h3>
+          <span>&nbsp;{{user.amount.available_amount || 0 | swMoney}}</span>
+          <a ui-sref="statement">View Account History</a>
+        </div>
+        <!-- Large modal -->
+      </div>
+    </div>
+
+  </div>
+  <!-- /container -->
+</div>

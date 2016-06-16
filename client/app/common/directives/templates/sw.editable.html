@@ -1,0 +1,12 @@
+<span
+  ng-init="isEditing = false"
+  ng-click="isEditing = !isEditing"
+  ng-show="!isEditing"
+  class="sw-editable"
+  ng-transclude>
+</span>
+
+<div class="form-group form-group-editing" ng-show="isEditing">
+  <input type="type" ng-model="editable" sw-money-input class="form-control" valid-number>
+  <btn class="button" ng-click="save()">Save</btn>
+</div>

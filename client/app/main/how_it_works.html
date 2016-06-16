@@ -1,0 +1,147 @@
+
+<div class="context-header container user-dashboard ">
+  <h1>Help</h1>
+</div>
+
+<div class="main-wrapper">
+  <div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+      <div class="col-md-12 basic-page">
+        <div class="container">
+          <!-- start #sidebar -->
+			<div id="sidebar">
+				<ul id="navigation">
+					<li><a class="nav-tab" href="#flow_sale">Flow of sale</a></li>
+					<li><a class="nav-tab" href="#flow_purchase">Flow of Purchase</a></li>
+					<li><a class="nav-tab" href="#before_buying">Before buying</a></li>
+					<li><a class="nav-tab" href="#add_funds">Adding funds to your account</a></li>
+					<li><a class="nav-tab" href="#withdraw_funds">Withdrawing funds</a></li>
+					<li><a class="nav-tab" href="#support">Problems and support</a></li>
+
+				</ul>
+			</div>
+			<!-- end #sidebar -->
+
+
+			<!-- start #main-content -->
+	<div id="main_content">
+
+
+		<div class="help-block" id="flow_sale">
+
+              <h2 class="title-header">
+		          <div class="title-headerin"><i class="fa fa-tags"></i> Flow of sale</div>
+		          <div class="clear"></div>
+		      </h2>
+
+		      <ol>
+                <li>Select an item from your invetory and click "Place item"</li>
+                <li>Accept the trade with the CSGOSM bot which will keep the skin until somebody buys it</li>
+                <li>Your skin will be put on sale</li>
+                <li>When an user buys the skin you will receive the earnings</li>
+			</ol>
+            </div>
+
+            <div class="help-block" id="flow_purchase">
+              <a name="flowP"></a>
+
+              <h2 class="title-header">
+		          <div class="title-headerin"><i class="fa fa-shopping-cart"></i> Flow of Purchase</div>
+		          <div class="clear"></div>
+		      </h2>
+
+
+
+              <ol>
+                <li>Select one or more items to purchase</li>
+                <li>Go to the cart and click buy</li>
+                <li>After the payment is completed you will receive a trading request from our CSGOSM bot</li>
+                <li>Once the trade is accepted the new skin will be available in your inventory. You can check your inventory in the User Dashboard</li>
+              </ol>
+            </div>
+
+            <div class="help-block" id="before_buying">
+              <a name="tradeUrl"></a>
+
+              <h2 class="title-header">
+		          <div class="title-headerin">Before buying</div>
+		          <div class="clear"></div>
+		      </h2>
+
+              <p>Before being able to buy a skin you will need to:</p>
+
+              <ol>
+                <li>Set up your trade url in the settings page </li>
+                <li>Add funds to your account </li>
+              </ol>
+
+            </div>
+
+            <div class="help-block" id="add_funds">
+              <a name="edit"></a>
+
+              <h2 class="title-header">
+		          <div class="title-headerin">Adding funds to your account</div>
+		          <div class="clear"></div>
+		      </h2>
+
+              <p><b>To be able to purchase skins you will firstly need to add funds to your account.</b> To do this click on <b>"Make a deposit"</b> under the user menu on the top right corner once logged in.</p>
+			  <p>You can select different ammounts to deposit. All transactions are being dealt by Paypal at the current time.</p>
+            </div>
+
+            <div class="help-block" id="withdraw_funds">
+              <a name="return"></a>
+
+              <h2 class="title-header">
+		          <div class="title-headerin">Withdrawing funds</div>
+		          <div class="clear"></div>
+		      </h2>
+
+              <p>You can cashout funds to Paypal by going to the withdrawals page under the user menu on the top right corner once logged in and adding a new withdrawal.</p>
+              <p>Please note that all withdrawals are manually reviewed for security reasons and <b>it can take up to 7 days to receive your funds</b>.</p>
+              <p><b>There is a minimun withdrawal ammount which is $5.00 USD.</b></p>
+            </div>
+
+
+            <div class="help-block" id="support">
+              <a name="cashout"></a>
+
+              <h2 class="title-header">
+		          <div class="title-headerin">Problems and support</div>
+		          <div class="clear"></div>
+		      </h2>
+
+              <p>If you are experiecing problems like items missing from your inventory or any other problems <a href="http://community.csgosm.com/viewforum.php?f=3">please make a post in our support forums</a> or contact the live chat.</p>
+            </div>
+
+
+
+
+	</div>
+	<!-- end #main-content -->
+
+
+        </div>
+
+
+      </div>
+    </div>
+
+  </div>
+  <!-- /container -->
+</div>
+<script>
+
+$(document).ready(function() {
+  $('#navigation').onePageNav({
+    begin: function() {
+	  console.log('start')
+    },
+    end: function() {
+	  console.log('stop')
+    }
+  });
+
+});
+</script>

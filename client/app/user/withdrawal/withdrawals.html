@@ -1,0 +1,163 @@
+<div class="context-header container user-dashboard ">
+  <h1>Withdrawals</h1>
+  <ul id="user-tabs" class="nav nav-tabs" role="tablist">
+    <li><a ui-sref="portfolio" ui-sref-active="active"><i class="fa fa-user"></i> User Dashboard</a></li>
+    <li><a ui-sref="profile({id: user.steam_user_id})"><i class="fa fa-user-secret"></i> Profile</a></li>
+    <li><a ui-sref="settings" ui-sref-active="active"><i class="fa fa-cog"></i> Settings</a></li>
+    <li><a ui-sref="statement" ui-sref-active="active"><i class="fa fa-area-chart"></i> Statement</a></li>
+    <li><a ui-sref="withdrawals" ui-sref-active="active"><i class="fa fa-calculator"></i> Withdrawals</a></li>
+  </ul>
+</div>
+
+<div class="main-wrapper">
+  <div class="container statement-page">
+    <!-- Example row of columns -->
+    <div class="row">
+      <div class="col-md-12  ">
+        <div class="grid-container">
+          <div class="withdrawal__container h-clearfix">
+            <div class="alert alert-info">
+              If you are experiencing problems with the payment please DO NOT intiate a dispute or request cashback in Paypal, this will result in the inmediate ban of your account and Paypal.<br /> <a href="http://support.csgosm.com/index.php?p=support&sp=create&ssp=2" target="_blank">Please open a ticket or contact us in the live chat</a>, we will solve your problem as soon as possible.</div>
+            <div class="withdrawal-status">
+              <div class="withdrawal">
+                <div class="withdrawal-heading">
+                  <h2 class="withdrawal-heading_title">Pending withdrawals</h2>
+                  <span class="withdrawal-heading_history">
+                    <a href="/accounts/withdrawal/history" class="withdrawal-history h-pull-right">View withdrawal
+                      history</a>
+                  </span>
+
+                  <div ng-if="vm.pendingWithdrawals.length == 0">
+                    No Pending withdrawals
+                  </div>
+
+                </div>
+                <div>
+                  <div class="withdrawal_item" ng-repeat="pendingWidrawal in vm.pendingWithdrawals">
+                    <span class="withdrawal_amount">
+                      <strong>{{pendingWidrawal.amount | swMoney}}</strong>
+                    </span>
+
+                    <div class="withdrawal_meta">
+                      <span>Requested: {{pendingWidrawal.created_at | date}}</span>
+                        <span class="withdrawal__cancel">
+                          <a class="x-btn" data-confirm="Are you sure you would like to cancel this withdrawal request?" data-method="post" ng-click="vm.cancelWithdrawal('this withdrawal', pendingWidrawal._id)"
+                             rel="nofollow"><span class="e-icon__alt"><i class="fa fa-times"></i></span></a>
+                        </span>
+                    </div>
+                    <div class="withdrawal_via">
+                      <span>to {{pendingWidrawal.withdrawal_email}} via Paypal<i>(less $1.75 transaction fee)</i></span>
+                    </div>
+                  </div>
+                </div>
+
+
+                <form accept-charset="UTF-8" class="form new_withdrawal" data-model-name="default_withdrawal_account" id="payment_form" ng-submit="vm.makeWithdrawal()" method="post" novalidate="novalidate">
+                  <div id="payment-request-header" class="payment-request-header">
+                    <div class="payment-request-header__inner">
+                      <h2 class="payment-request-header_title">New withdrawal</h2>
+                    </div>
+                  </div>
+
+
+                  <span class="withdrawal-amount__currency">$</span>
+                  <input autocomplete="off" class="withdrawal-amount form-control" name="withdrawal[amount]" ng-model="vm.withdrawal.amount" sw-money-input valid-number placeholder="0.00" size="30" type="text">
+                    <span class="payment-request-header_balance">You can withdraw up to <strong>{{user.amount.available_amount | swMoney}}</strong></span>
+                  <p>
+                   <small class="withdrawal-notification">Please allow up to 72h for the withdraw to be processed.</small>
+                  </p>
+
+                  <div class="js-dependent-fields alert-notification alert-notification--no-margin"
+                       data-radio-name="withdrawal[type]" data-radio-value="single_all|automated"
+                       style="display: none;">
+                    If you choose an <strong>All earnings</strong> option, you must still meet the minimum withdrawal
+                    amounts below.<br>
+                    Your withdrawal request will not be processed unless it meets the minimum requirements.
+                  </div>
+
+                  <!-- data-toggle="modal" data-target="#getwhitelisted" -->
+                  <button type="button" class="btn-icon btn--primary submit right" ng-click="vm.makeWithdrawal()" ng-disabled="vm.makeWithdrawalDisabled || !vm.user.withdrawal_email || vm.isRequestPending">Make withdrawal</button>
+                  <!-- Modal -->
+                  <!--<div class="modal fade getwlm" id="getwhitelisted" tabindex="-1" role="dialog"
+                       aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                          <h4 class="modal-title" id="myModalLabel">Please get withlisted</h4>
+                        </div>
+                        <div class="modal-body">
+                          <p>To be able to deposit <b>more than 50$</b> you need to get whitelisted by providing some
+                            information about yourself. The documents we will need from you are:</p>
+
+                          <ul>
+                            <li>A picture of an valid ID (passport, driving licence).</li>
+                            <li>A proof of address (Utility bill or bank statement). <b>Please note that the address
+                              must match the one used in Paypal.</b></li>
+                            <li>You must be 18+ (if you aren't please ask your parents to do this process for you)</li>
+                          </ul>
+
+                          Once you have these documents please click on the "Get whitelisted" button bellow or simply
+                          create a ticket in our <a
+                          href="http://support.csgosm.com/index.php?p=support&sp=create&ssp=5">support section</a>.
+
+                          <br/><b>This is a ONE TIME proccess</b>, you wont need to do it again after your Paypal is
+                          whitelisted.
+
+                          <p>For more information about whitelisting <a href="http://support.csgosm.com/">please check
+                            our FAQ</a>.</p>
+                        </div>
+                        <a href="http://support.csgosm.com/index.php?p=support&sp=create&ssp=5" class="button">Get whitelisted</a>
+
+                      </div>
+                    </div>
+                  </div>-->
+                </form>
+
+              </div>
+
+            </div>
+            <div class="withdrawal-default">
+              <div class="withdrawal">
+                <div class="withdrawal-heading">
+                  <h2 class="withdrawal-heading_title">Default withdrawal account</h2>
+                </div>
+                <form name="emailWithdrawalForm">
+                  <div class="withdrawal-default_account h-clearfix">
+                    <img  alt="Paypal Logo" src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Paypal_2014_logo.png">
+
+                    <div class="withdrawal-default-info">
+                      <div ng-if="!vm.edit">
+                        <p ng-bind="vm.user.withdrawal_email"></p>
+                      </div>
+                      <div ng-if="vm.edit">
+                        <input class="form-control" name="withdrawalEmail" type="email" ng-model="vm.withdrawal_email" ng-required="true" />
+                        <div role="alert">
+                          <span class="error" ng-show="emailWithdrawalForm.withdrawalEmail.$error.required">Required!</span>
+                          <span class="error" ng-show="emailWithdrawalForm.withdrawalEmail.$error.email">Not valid email!</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div ng-if="!vm.edit" class="def-withbut">
+                    <button ng-click="vm.changeEmail()" class="button">Change default account</button>
+                  </div>
+                  <div ng-if="vm.edit">
+                    <button class="button" ng-click="vm.update()" ng-disabled="!emailWithdrawalForm.$valid || vm.isRequestPending">Save</button>
+                    <button class="button" ng-click="vm.cancelEditEmail()">Cancel</button>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>

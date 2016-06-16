@@ -1,0 +1,101 @@
+<div class="categories-menu navbar-collapse collapse">
+
+  <div class="container">
+    <a class="navbar-brand" ui-sref="main"><img src="/assets/images/logo.png" /></a>
+    <div class="navbar-collapse collapse">
+      <form name="searchSkinForm" ng-submit="vm.searchItem()">
+        <div class="search">
+          <input type="search" autocomplete="off" name="search" ng-model="vm.search" ng-minlength="3" ng-trim="true" placeholder="Search skins..." required>
+          <div role="alert">
+            <span class="error" ng-show="searchSkinForm.search.$error.minlength">Too short!</span>
+          </div>
+        </div>
+      </form>
+
+      <ul class="nav navbar-nav">
+        <li class="menu-item dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Knife <i class="fa fa-angle-double-down"></i></a>
+          <ul class="dropdown-menu">
+            <li><a ui-sref="search.result({weapon: 'Bayonet Knife'})"><img src="assets/images/weapon-icons/knife/bayonet.png" /> Bayonet</a></li>
+            <li><a ui-sref="search.result({weapon: 'Bowie Knife'})"><img src="assets/images/weapon-icons/knife/bowie.png" /> Bowie</a></li>
+            <li><a ui-sref="search.result({weapon: 'Butterfly Knife'})"><img src="assets/images/weapon-icons/knife/butterfly.png" /> Butterfly</a></li>
+            <li><a ui-sref="search.result({weapon: 'Falchion Knife'})"><img src="assets/images/weapon-icons/knife/falchion.png" /> Falchion</a></li>
+            <li><a ui-sref="search.result({weapon: 'Flip Knife'})"><img src="assets/images/weapon-icons/knife/flip.png" /> Flip Knife</a></li>
+            <li><a ui-sref="search.result({weapon: 'Gut Knife'})"><img src="assets/images/weapon-icons/knife/gutknife.png" /> Gut Knife</a></li>
+            <li><a ui-sref="search.result({weapon: 'Huntsman Knife'})"><img src="assets/images/weapon-icons/knife/huntsman.png" /> Huntsman</a></li>
+            <li><a ui-sref="search.result({weapon: 'Karambit Knife'})"><img src="assets/images/weapon-icons/knife/karambit.png" /> Karambit</a></li>
+            <li><a ui-sref="search.result({weapon: 'M9 Bayonet Knife'})"><img src="assets/images/weapon-icons/knife/m9bayonet.png" /> M9 Bayonet</a></li>
+            <li><a ui-sref="search.result({weapon: 'Shadow Daggers Knife'})"><img src="assets/images/weapon-icons/knife/shadow.png" /> Shadow Daggers</a></li>
+
+          </ul>
+        </li>
+
+        <li class="menu-item dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pistol <i class="fa fa-angle-double-down"></i></a>
+          <ul class="dropdown-menu">
+            <li><a ui-sref="search.result({weapon: 'CZ75-Auto'})"><img src="assets/images/weapon-icons/pistols/CZ75auto.png" /> CZ75-Auto</a></li>
+            <li><a ui-sref="search.result({weapon: 'Desert Eagle'})"><img src="assets/images/weapon-icons/pistols/Deserteagle.png" /> Desert Eagle</a></li>
+            <li><a ui-sref="search.result({weapon: 'Dual Berettas'})"><img src="assets/images/weapon-icons/pistols/Dualberettas.png" /> Dual Berettas</a></li>
+            <li><a ui-sref="search.result({weapon: 'Five-SeveN'})"><img src="assets/images/weapon-icons/pistols/Fiveseven.png" /> Five-SeveN</a></li>
+            <li><a ui-sref="search.result({weapon: 'Glock-18'})"><img src="assets/images/weapon-icons/pistols/Glock18.png" /> Glock-18</a></li>
+            <li><a ui-sref="search.result({weapon: 'P250'})"><img src="assets/images/weapon-icons/pistols/P250.png" /> P250</a></li>
+            <li><a ui-sref="search.result({weapon: 'P2000'})"><img src="assets/images/weapon-icons/pistols/P2000.png" /> P2000</a></li>
+            <li><a ui-sref="search.result({weapon: 'Tec-9'})"><img src="assets/images/weapon-icons/pistols/Tec9.png" /> Tec-9</a></li>
+            <li><a ui-sref="search.result({weapon: 'USP-S'})"><img src="assets/images/weapon-icons/pistols/USP.png" /> USP-S</a></li>
+          </ul>
+        </li>
+
+        <li class="menu-item dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Rifles <i class="fa fa-angle-double-down"></i></a>
+          <ul class="dropdown-menu">
+            <li><a ui-sref="search.result({weapon: 'AK-47'})"><img src="assets/images/weapon-icons/rifle/AK-47.png" /> AK-47</a></li>
+            <li><a ui-sref="search.result({weapon: 'AUG'})"><img src="assets/images/weapon-icons/rifle/AUG.png" /> AUG</a></li>
+            <li><a ui-sref="search.result({weapon: 'AWP'})"><img src="assets/images/weapon-icons/rifle/AWP.png" />AWP</a></li>
+            <li><a ui-sref="search.result({weapon: 'FAMAS'})"><img src="assets/images/weapon-icons/rifle/FAMAS.png" /> FAMAS</a></li>
+            <li><a ui-sref="search.result({weapon: 'G3SG1'})"><img src="assets/images/weapon-icons/rifle/G3SG1.png" /> G3SG1</a></li>
+            <li><a ui-sref="search.result({weapon: 'Galil AR'})"><img src="assets/images/weapon-icons/rifle/Galilar.png" /> Galil AR</a></li>
+            <li><a ui-sref="search.result({weapon: 'M4A1-S'})"><img src="assets/images/weapon-icons/rifle/M4A1-S.png" /> M4A1-S</a></li>
+            <li><a ui-sref="search.result({weapon: 'M4A4'})"><img src="assets/images/weapon-icons/rifle/M4A4.png" /> M4A4</a></li>
+            <li><a ui-sref="search.result({weapon: 'SCAR-20'})"><img src="assets/images/weapon-icons/rifle/SCAR-20.png" /> SCAR-20</a></li>
+            <li><a ui-sref="search.result({weapon: 'SG 553'})"><img src="assets/images/weapon-icons/rifle/SG553.png" /> SG 553</a></li>
+            <li><a ui-sref="search.result({weapon: 'SSG 08'})"><img src="assets/images/weapon-icons/rifle/SSG08.png" /> SSG 08</a></li>
+          </ul>
+        </li>
+
+        <li class="menu-item dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Heavy <i class="fa fa-angle-double-down"></i></a>
+          <ul class="dropdown-menu">
+            <li><a ui-sref="search.result({weapon: 'M249'})"><img src="assets/images/weapon-icons/heavy/M249.png" /> M249</a></li>
+            <li><a ui-sref="search.result({weapon: 'MAG-7'})"><img src="assets/images/weapon-icons/heavy/MAG7.png" /> MAG-7</a></li>
+            <li><a ui-sref="search.result({weapon: 'Negev'})"><img src="assets/images/weapon-icons/heavy/Negev.png" /> Negev</a></li>
+            <li><a ui-sref="search.result({weapon: 'Nova'})"><img src="assets/images/weapon-icons/heavy/Nova.png" /> Nova</a></li>
+            <li><a ui-sref="search.result({weapon: 'Sawed-Off'})"><img src="assets/images/weapon-icons/heavy/Sawedoff.png" /> Sawed-Off</a></li>
+            <li><a ui-sref="search.result({weapon: 'XM1014'})"><img src="assets/images/weapon-icons/heavy/XM1014.png" /> XM1014</a></li>
+
+          </ul>
+        </li>
+
+        <li class="menu-item dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SMGs <i class="fa fa-angle-double-down"></i></a>
+          <ul class="dropdown-menu">
+            <li><a ui-sref="search.result({weapon: 'MAC-10'})"><img src="assets/images/weapon-icons/smg/MAC-10.png" /> MAC-10</a></li>
+            <li><a ui-sref="search.result({weapon: 'MP7'})"><img src="assets/images/weapon-icons/smg/MP7.png" /> MP7</a></li>
+            <li><a ui-sref="search.result({weapon: 'MP9'})"><img src="assets/images/weapon-icons/smg/MP9.png" />MP9</a></li>
+            <li><a ui-sref="search.result({weapon: 'P90'})"><img src="assets/images/weapon-icons/smg/P90.png" /> P90</a></li>
+            <li><a ui-sref="search.result({weapon: 'PP-Bizon'})"><img src="assets/images/weapon-icons/smg/PP-Bizon.png" /> PP-Bizon</a></li>
+            <li><a ui-sref="search.result({weapon: 'UMP-45'})"><img src="assets/images/weapon-icons/smg/UMP-45.png" /> UMP-45</a></li>
+          </ul>
+        </li>
+
+        <li class="menu-item dropdown">
+          <a ui-sref="search.result({type: 'Container'})" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cases</a>
+        </li>
+        <li id="menu-item-666" class="menu-item">
+          <a ui-sref="search.result({type: 'Key'})"><span>Keys</span></a>
+        </li>
+      </ul>
+
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>

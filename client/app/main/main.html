@@ -1,0 +1,61 @@
+<update-title title="CS:GO Skins Market"></update-title>
+<update-meta name="description" content="Default description"></update-meta>
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="mid-banner">
+  <h1><span>{{countObject.count}}</span> CS:GO Skins on sale</h1>
+  <div class="btn-group" uib-dropdown>
+    <button type="button" class="button" uib-dropdown-toggle>
+      Select a category to start browsing <i class="fa fa-angle-double-down"></i>
+    </button>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="single-button">
+      <li role="menuitem"><a ui-sref="search.result({type:'Knife'})"><img src="assets/images/weapon-icons/knife.png" alt="Knife"> Knifes</a></li>
+      <li role="menuitem"><a ui-sref="search.result({type:'Pistol'})"><img src="assets/images/weapon-icons/pistol.png" alt="Pistol"> Pistols</a></li>
+      <li role="menuitem"><a ui-sref="search.result({type:'Rifle'})"><img src="assets/images/weapon-icons/rifle.png" alt="Rifle"> Rifles</a></li>
+      <li role="menuitem"><a ui-sref="search.result({type:'SMG'})"><img src="assets/images/weapon-icons/smg.png" alt="SMG"> SMGs</a></li>
+      <li role="menuitem"><a ui-sref="search.result({type:'Heavy'})"><img src="assets/images/weapon-icons/heavy.png" alt="Heavy"> Heavys</a></li>
+      <li role="menuitem"><a ui-sref="search.result({type:'Shotgun'})"><img src="assets/images/weapon-icons/shotgun.png" alt="Shotgun"> Shotguns</a></li>
+      <li role="menuitem"><a ui-sref="search.result({type:'Container'})"><img src="assets/images/weapon-icons/case.png" alt="Case"> Cases</a></li>
+      <li role="menuitem"><a ui-sref="search.result({type:'Key'})"><img src="assets/images/weapon-icons/key.png" alt="Key"> Keys</a></li>
+    </ul>
+    <div class="clear"></div>
+  </div>
+  <div class="mb-add">
+  	<a ui-sref="search.result({sort: '-user_price'})">Browse Top Items</a>
+  	<a ui-sref="search.result({sort: '-created_at'})">Browse New Items</a>
+  	<a href="http://support.csgosm.com/" target="_blank">Learn How It works</a>
+  </div>
+</div>
+<div class="main-wrapper">
+  <div class="container" infinite-scroll="loadMore()">
+    <!-- Example row of columns -->
+    <div class="row">
+      <div class="col-md-12 latest-items items-fullwidth premium-items">
+        <h2 class="title-header">
+          <div class="title-headerin"><i class="fa fa-align-left"></i> Latest items</div>
+
+          <div class="btn-group" uib-dropdown>
+            <button type="button" class="button" uib-dropdown-toggle>
+              {{itemsByLabel}}<span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="single-button">
+              <li role="menuitem"><a ng-click="findItemsByPrice()">By Price</a></li>
+              <li role="menuitem"><a ng-click="findItemsByDate()">By Date</a></li>
+            </ul>
+            <div class="clear"></div>
+          </div>
+          <div class="sort-by">Sort by:</div>
+          <div class="clear"></div>
+        </h2>
+        <ul class="items">
+          <li ng-repeat="itemOnSale in itemsOnSale">
+          	<sw-item item="itemOnSale"></sw-item>
+          </li>
+          <li ng-show="isLoading">
+            <spinner></spinner>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- /container -->
+</div>

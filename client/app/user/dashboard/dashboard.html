@@ -1,0 +1,54 @@
+<div class="context-header container user-dashboard ">
+  <h1>User Dashboard</h1>
+  <ul id="user-tabs" class="nav nav-tabs" role="tablist">
+    <li class="active"><a href="#"><i class="fa fa-user"></i> User Dashboard</a></li>
+    <li><a ui-sref="profile({id: user.steam_user_id})" ui-sref-active="active"><i class="fa fa-user-secret"></i> Profile</a></li>
+    <li><a ui-sref="settings" ui-sref-active="active"><i class="fa fa-cog"></i> Settings</a></li>
+    <li><a ui-sref="statement" ui-sref-active="active"><i class="fa fa-area-chart"></i> Statement</a></li>
+    <li><a ui-sref="withdrawals" ui-sref-active="active"><i class="fa fa-calculator"></i> Withdrawals</a></li>
+  </ul>
+</div>
+
+<div class="main-wrapper">
+  <div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+      <div class="col-md-10 latest-items your-items ">
+        <!-- Nav tabs -->
+        <ul class="portfolio-item" role="tablist">
+          <li role="presentation" ui-sref-active="active"><a aria-controls="selling-item" role="tab" data-toggle="tab" ui-sref="portfolio">Selling items</a></li>
+          <li role="presentation" ui-sref-active="active"><a aria-controls="returned-items" role="tab" ui-sref="inventory" data-toggle="tab">Inventory</a></li>
+        </ul>
+
+        <div class="tab-content inv-items" ng-if="!isLoading">
+          <div ng-if="!sellingItems || sellingItems.length === 0" class="alert alert-warning"><p>Currently You don't have any selling items! </p></div>
+          <ul class="items tab-pane active" role="tabpanel" aria-labelledby="selling-items" ng-if="sellingItems.length > 0">
+            <li ng-repeat="item in sellingItems" ng-class="{'selected':selection.indexOf($index)!=-1}" ng-click="toggle($index)">
+              <i ng-if="item.hasStickers" class="fa fa-certificate" tooltip-trigger="mouseenter"  uib-tooltip="Has stickers"></i>
+              <a href="">
+                <div class="steamdisc" ng-if="item.user_price < item.steam_price"><i class="fa fa-steam-square"></i>&nbsp;{{item.steam_price | swMoney}}</div>
+                <img ng-src="https://steamcommunity-a.akamaihd.net/economy/image/{{item.icon_url}}"/>
+
+                <div class="item-info">
+                  <h4>{{item.name}}</h4>
+                  <h5 ng-if="item.type == 'Container'">({{item.type}})</h5>
+                  <h5 ng-if="item.type !== 'Container'">({{item.exterior}})</h5>
+
+                  <div class="price">&nbsp;{{item.user_price | swMoney}}</div>
+                </div>
+              </a>
+            </li>
+            <div class="clear"></div>
+          </ul>
+          <div class="clear"></div>
+        </div>
+      </div>
+      <div class="col-md-2 your-items-side ">
+        <!-- data-toggle="modal" data-target=".bs-example-modal-lg" -->
+        <button class="button sell-a-skin " ng-click="openSellSkinModal()" ng-disabled="!isTradeUrlSet() || isRequestPending"> <i class="fa fa-cart-plus"></i> Sell a skin</button>
+        <button class="button cancelsale" ng-click="cancelSale()" ng-disabled="isDisabled() || isRequestPending"> <i class="fa fa-cart-plus"></i> Cancel Sale</button>
+      </div>
+    </div>
+  </div>
+  <!-- /container -->
+</div>

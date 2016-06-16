@@ -1,0 +1,41 @@
+  <div class="modal-dialog modal-lg bs-example-modal-lg inventory" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-content">
+      <div class="title-header"><div class="title-headerin">Please choose the skins you want to sell from your inventory</div></div>
+      <div class="col-lg-4">
+        <div class="current-skin-sec">
+          <h4>{{vm.selectedItem.name}}</h4>
+          <spinner ng-if="vm.isItemLoading"></spinner>
+          <div ng-hide="vm.isItemLoading">
+            <img ng-src="https://steamcommunity-a.akamaihd.net/economy/image/{{vm.selectedItem.icon_url}}/256fx256f"/>
+            <div class="price-skin"><i class="fa fa-steam"></i>&nbsp;{{vm.selectedItem.steam_price | swMoney}}</div>
+          </div>
+        </div>
+        <div class="current-skin-price">
+          <div class="sell-price"><span>User pays:</span> <div class="pricef-con"><i>&dollar;</i>
+            <input type="text" class="form-control" ng-model="vm.selectedItem.user_price" ng-change="vm.calculateAmount()" sw-money-input ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" valid-number/></div><div class="clear"></div>
+          </div>
+          <div class="your-cut"><span>You receive:</span> <div class="pricef-con"><i>&dollar;</i>
+            <input type="text" class="form-control" ng-model="vm.userReceivedAmount" sw-money-input valid-number disabled/></div><div class="clear"></div>
+          </div>
+          <button href="#" class="button" ng-click="vm.placeItem(vm.selectedItem)" ng-disabled="vm.isRequestPending"> Place item</button>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <div class="inventory-search">
+          <input type="text" ng-model="vm.searchText" class="form-control" placeholder="Search a skin..." /> <button><i class="fa fa-search"></i></button>
+        </div>
+        <spinner ng-if="vm.isInventoryLoading"></spinner>
+        <div class="inventory-content" ng-hide="vm.isInventoryLoading">
+          <a class="item" href="#" ng-repeat="item in vm.items | filter: {name: vm.searchText, market_hash_name: searchText}"
+             ng-click="$event.preventDefault(); vm.selectItem(item, $index)"
+             data-toggle="tooltip" data-placement="top" title="{{item.name}}" ng-class="{'selected': vm.selectedIndex === $index}">
+            <img class="smallimg" ng-src="https://steamcommunity-a.akamaihd.net/economy/image/{{item.icon_url}}/64fx64f" />
+            <div class="rarity Covert" ng-if="item.type == 'Container'">({{item.type}})</div>
+            <div class="rarity Covert" ng-if="item.type !== 'Container'">({{item.exterior}})</div>
+          </a>
+          <div class="clear"></div>
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>

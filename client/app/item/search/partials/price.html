@@ -1,0 +1,39 @@
+<div class="search-facet">
+  <div class="search-facet-box">
+    <div class="search-facet-box__inner">
+      <h2 class="search-facet-box__heading widget-header"><i class="e-icon -icon-dollar -margin-right"></i>Price
+      </h2>
+      <form name="searchByPriceForm" novalidate>
+        <div class="search-facet-range__inputs">
+          <div class="search-facet-range__input--with-prefix">
+            <label for="price_min">From</label>
+            <span>$</span>
+            <input data-validation-message="Please enter a positive dollar amount"
+                   data-view="searchInputValidation" id="price_min" name="price_min"
+                   maxlength="5"
+                   sw-integer-price
+                   ng-model="vm.priceFrom"
+                   type="text"
+                   class="form-control">
+          </div>
+          <div class="search-facet-range__input--with-prefix">
+            <label for="price_max">To</label>
+            <span>$</span>
+            <input data-validation-message="Please enter a positive dollar amount"
+                   data-view="searchInputValidation" id="price_max" name="price_max"
+                   ng-model="vm.priceTo"
+                   sw-integer-price
+                   maxlength="5"
+                   type="text"
+                   class="form-control">
+          </div>
+          <div class="search-facet-range__input--submit">
+            <button class="no-label" type="submit" ng-click="vm.searchByPrice()">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

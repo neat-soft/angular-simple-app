@@ -1,0 +1,36 @@
+<div class="context-header container category-header">
+  <form class="search-category-home">
+    <input name="query" placeholder="Search within these results" type="search" ng-model="vm.query" ng-submit="vm.submit();">
+    <button type="submit" ng-click="vm.submit()"><i class="fa fa-search"></i></button>
+  </form>
+  <h5>{{vm.itemsCount}}&nbsp;Primary Weapons</h5>
+</div>
+
+<div class="main-wrapper deposit">
+  <div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+
+      <div class="col-md-3 ">
+        <div class="search-facet-panel" data-view="searchFacetPanel">
+          <input id="term" name="term" value="" type="hidden">
+          <div class="search-facet">
+            <ng-include src="'app/item/search/partials/price.html'"></ng-include>
+            <ng-include src="'app/item/search/partials/weapon.type.html'"></ng-include>
+            <ng-include src="'app/item/search/partials/exteriors.html'"></ng-include>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-9 latest-items your-items ">
+        <div class="tab-content">
+          <ng-include src="'app/item/search/partials/horizontal.facet.html'"></ng-include>
+          <div ui-view>
+            <h1>Search result</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /container -->
+</div>

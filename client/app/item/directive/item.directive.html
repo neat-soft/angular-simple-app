@@ -1,0 +1,17 @@
+<i ng-if="vm.item.hasStickers" class="fa fa-certificate" tooltip-trigger="mouseenter"  uib-tooltip="Has stickers"></i>
+<sw-cart-addtocart ng-if="!vm.isOwner(vm.item.user_id)" id="{{vm.item.steam_id}}" name="{{vm.item.name}}" price="{{vm.item.user_price}}" quantity="1" data="vm.item" custom-class="add-to-cart button">
+</sw-cart-addtocart>
+<a ui-sref="item({id: vm.item.steam_id})">
+  <div class="steamdisc" ng-if="vm.item.user_price < vm.item.steam_price"><i class="fa fa-steam-square"></i>&nbsp;{{vm.item.steam_price | swMoney}}</div>
+  <img ng-src="https://steamcommunity-a.akamaihd.net/economy/image/{{vm.item.icon_url}}"/> <!-- 209 157 -->
+
+  <div class="item-info">
+    <div class="item-info-in">
+      <h4>{{vm.item.name}}</h4>
+      <h5 ng-if="vm.item.type && vm.item.type === 'Container' || vm.item.type === 'Key' || vm.item.type === 'Sticker'">({{vm.item.type}})</h5>
+      <h5 ng-if="vm.item.exterior">({{vm.item.exterior}})</h5>
+
+      <div class="price">{{vm.item.user_price | swMoney}}</div>
+    </div>
+  </div>
+</a>

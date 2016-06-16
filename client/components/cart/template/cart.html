@@ -1,0 +1,139 @@
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="context-header container">
+  <h1>Shopping Cart</h1>
+</div>
+
+<div class="main-wrapper cart">
+  <div class="container">
+    <div class="alert alert-warning empty-cart-n" role="alert" ng-show="swCart.getTotalItems() === 0">
+      Your shopping cart is empty <a href="../" class="button">Continue shopping <i class="fa fa-shopping-basket"></i></a>
+    </div>
+    <!-- Example row of columns -->
+    <div class="row" ng-if="swCart.getTotalItems() > 0">
+      <div class="col-md-8  ">
+        <div class="cart-items">
+          <h2 class="title-header">
+            <a href="#" ui-sref="main" class="button cshopping">Continue Shopping</a>
+
+            <div class="mid">
+              <i class="fa fa-star"></i> You have {{swCart.getTotalItems()}} items in your cart
+            </div>
+            <a href="#" class="button ecart" ng-click="swCart.empty(true)">Empty Cart</a>
+
+            <div class="clear"></div>
+          </h2>
+
+          <div class="clear"></div>
+        </div>
+        <div class="shopping-cart">
+
+          <div class="shopping-cart__group">
+
+            <!-- Single item start -->
+            <article class="shopping-cart__entry" ng-repeat="item in swCart.getCart().items track by $index">
+              <div class="item-result">
+                <div class="item-result__thumbnail">
+                  <a ui-sref="item({id: item._data.steam_id})">
+                    <img alt="{{item._data.name}}" height="80" width="80"
+                         ng-src="https://steamcommunity-a.akamaihd.net/economy/image/{{item._data.icon_url}}"/>
+                  </a>
+                </div>
+
+                <!-- start item-result__details -->
+                <div class="item-result__details">
+                  <div class="cart-entry">
+
+                    <div class="cart-entry__title">
+                      <h5 class="t-body -weight-bold h-remove-margin"><a ui-sref="item({id: item._data.steam_id})">{{item._data.name}}</a></h5>
+                    </div>
+
+                    <!--<div class="cart-entry__descriptive">
+                      <p class="t-body -size-s -color-inherit">
+                        Item by <a href="#"></a>
+                      </p>
+                    </div>-->
+
+                    <div class="cart-entry__information">
+                      <div class="cart-entry__exinfo">
+                        <p class="t-body -size-s h-remove-margin">
+                          <strong>Item category:</strong>
+                          <a class="t-link" data-view="modalAjax" ui-sref="search.result({type: item._data.type})">
+							                <span class="cart_entry__information-detail">
+							                  {{item._data.type}}
+							                </span>
+                          </a>
+                        </p>
+                      </div>
+                      <div class="cart-entry__support">
+                        <a class="t-body -size-s h-remove-margin" ng-if="item._data.type === 'Container'" ui-sref="search.result({type: item._data.type})">
+                          ({{item._data.type}})</a>
+
+                        <a class="t-body -size-s h-remove-margin" ng-if="item._data.type !== 'Container' && item._data.exterior" ui-sref="search.result({exterior: item._data.exterior})">
+                          ({{item._data.exterior}})</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- end item-result__details -->
+
+                <div class="item-result__price">
+                  <div class="cart-entry__remove">
+                    <div style="margin:0;padding:0;display:inline">
+                      <input name="utf8" type="hidden" value="✓">
+                      <input name="authenticity_token" type="hidden"
+                             value="51ivLvukUw6cbccC2SLN3LVfBbMCuR1nuKhJLbClyAA=">
+                    </div>
+                    <a href="#" ng-click="swCart.removeItem($index)" class="cart-entry__remove"><i
+                      class="fa fa-times "></i></a>
+                  </div>
+                  <div class="cart-entry__price">
+                    <h6 class="t-heading -size-l h-remove-margin"><b
+                      class="t-currency">&nbsp;{{item._price | swMoney}}</b></h6>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <!-- Single item end -->
+
+          </div>
+
+          <div class="cart-footer ">
+            <div class="cart-footer__subtotal">
+              <span class="t-heading -size-s -weight-normal">Total</span>
+              <span class="t-heading -size-l"><b class="t-currency">&nbsp;{{swCart.getSubTotal() || 0 | swMoney}}</b></span>
+            </div>
+            <div class="cart-footer__controls">
+              <img src="assets/images/paypal.png" class="checkout_paymentop">
+					    <span class="cart-footer__checkout">
+                <sw-cart-checkout service="http" settings="{ url:'/api/users/local/sell' }">
+                </sw-cart-checkout>
+					    </span>
+
+              <div class="clear"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="col-md-4 ">
+        <div class="widget current-c-dpage checkoutwidget">
+          <h3>Your Cart Total</h3>
+          <span>&nbsp;{{swCart.getSubTotal() | swMoney}}</span>
+          <sw-cart-checkout service="http" settings="{ url:'/api/users/local/sell' }">
+          </sw-cart-checkout>
+        </div>
+
+        <div class="widget cart-questions">
+          <h4 class="t-heading -size-s">Questions?</h4>
+
+          <p class="t-body -size-m h-remove-margin">
+            If you have questions about your purchase, or any other issues
+            <a href="http://support.csgosm.com" target="_blank">Visit Our Help Center</a>
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,83 @@
+<update-title title="{{item.name}}"></update-title>
+<update-meta name="description" content="Item page description"></update-meta>
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="context-header container item-header">
+  <h1>{{item.name}}</h1>
+
+  <div class="thumbnails"><a ui-sref="main">Home</a> <i class="fa fa-angle-right"></i> <a ui-sref="search.result({type: item.type})">{{item.type}}</a>
+    <i class="fa fa-angle-right"></i> {{item.name}}
+  </div>
+</div>
+
+<div class="main-wrapper item-page">
+  <div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+      <div class="col-md-12 item-wrapper ">
+        <div class="item-img-cont">
+          <div class="item-img">
+            <img ng-src="https://steamcommunity-a.akamaihd.net/economy/image/{{item.icon_url}}"/>
+
+            <div class="item-owner"></div>
+          </div>
+          <div class="item_extra_info">
+
+            <a ui-sref="profile({id: item.user.steam_user_id})" class="ie_img" ng-if="item.user">
+              <img ng-src="{{item.user.avatar}}" class="havatar"/>
+
+              <div class="ie_nw">{{item.user.personaname}}<br/>
+                <span>
+                <sw-badges user="item.user"></sw-badges>
+                </span>
+              </div>
+            </a>
+
+            <span class='st_sharethis_hcount' displayText='ShareThis'></span>
+            <span class='st_facebook_hcount' displayText='Facebook'></span>
+            <span class='st_twitter_hcount' displayText='Tweet'></span>
+            <span class='st_reddit_hcount' displayText='Reddit'></span>
+            <span class='st_email_hcount' displayText='Email'></span>
+            <div class="clear"></div>
+          </div>
+        </div>
+        <div class="itemp-info">
+          <div class="item_desc_game_info">
+            <div class="item_desc_game_icon">
+              <img id="largeiteminfo_game_icon"
+                   src="http://cdn.akamai.steamstatic.com/steamcommunity/public/images/apps/730/69f7ebe2735c366c65c0b33dae00e12dc40edbe4.jpg"
+                   alt="Counter-Strike: Global Offensive">
+            </div>
+            <div id="largeiteminfo_game_name" class="ellipsis">Counter-Strike: Global Offensive</div>
+            <div id="largeiteminfo_item_type" class="">{{item.type}}</div>
+          </div>
+          <div class="item_desc_descriptors">
+            <div><!-- FIXME create directive -->
+              <div ng-repeat="description in item.descriptions" class="desce">
+                <div ng-style="{'color': '#'+description.color}" ng-bind-html="description.value | to_trusted"></div>
+              </div>
+            </div>
+
+            <a href="{{item.inspect_url}}" class="inspect-btn" ng-if="item.inspect_url">Inspect in Game...</a>
+          </div>
+
+          <div class="item_buy_cont">
+            <div class="item_price">
+              <h2>&nbsp;{{item.user_price | swMoney}}</h2>
+              <h6 ng-if="item.steam_price > item.user_price">
+                <i class="fa fa-steam"></i>&nbsp;{{item.steam_price | swMoney}}&nbsp;-&nbsp;You are saving {{ (item.steam_price - item.user_price) | swMoney}}!
+              </h6>
+            </div>
+          </div>
+          <sw-cart-addtocart ng-if="!isOwner(item.user_id)" id="{{item.steam_id}}" name="{{item.name}}" price="{{item.user_price}}" quantity="1" data="item">
+          </sw-cart-addtocart>
+        </div>
+
+        <div class="clear"></div>
+
+      </div>
+
+    </div>
+
+  </div>
+  <!-- /container -->
+</div>

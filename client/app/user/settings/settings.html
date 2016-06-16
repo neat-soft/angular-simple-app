@@ -1,0 +1,90 @@
+
+
+<div class="context-header container user-dashboard ">
+  <h1>Settings</h1>
+  <ul id="user-tabs" class="nav nav-tabs" role="tablist">
+    <li><a ui-sref="portfolio" ui-sref-active="active"><i class="fa fa-user"></i> User Dashboard</a></a></li>
+    <li><a ui-sref="profile({id: user.steam_user_id})" ui-sref-active="active"><i class="fa fa-user-secret"></i> Profile</a></li>
+    <li><a ui-sref="settings" ui-sref-active="active"><i class="fa fa-cog"></i> Settings</a></li>
+    <li><a ui-sref="statement" ui-sref-active="active"><i class="fa fa-area-chart"></i> Statement</a></li>
+    <li><a ui-sref="withdrawals" ui-sref-active="active"><i class="fa fa-calculator"></i> Withdrawals</a></li>
+  </ul>
+</div>
+
+<div class="main-wrapper">
+  <div class="container settings-page">
+    <!-- Example row of columns -->
+    <div class="row">
+      <div class="col-md-6 ">
+        <h2>Personal</h2>
+        <div class="input-group input-group-lg">
+          <span class="input-group-addon">First Name</span>
+          <input type="text" class="form-control" name="fName" ng-model="user.steam_details.realname.split(' ')[0]">
+        </div>
+
+        <div class="input-group input-group-lg">
+          <span class="input-group-addon">Last Name</span>
+          <input type="text" class="form-control" name="lName" ng-model="user.steam_details.realname.split(' ')[1]">
+        </div>
+
+        <div class="input-group input-group-lg">
+          <span class="input-group-addon">Contact Email <span class="fa fa-question-circle"
+                                                              title="Email isnt shown to the public, dont worry :) "></span></span>
+          <input type="email" class="form-control" name="cEmail" ng-model="user.email">
+        </div>
+
+        <div class="input-group input-group-lg profile-intro">
+          <span class="input-group-addon ">Profile introduction <span class="fa fa-question-circle"
+                                                                      title="Scripts and PHP isnt allowed."></span></span>
+          <textarea type="textarea" class="form-control" name="cIntro" ng-model="user.introduction"></textarea>
+        </div>
+
+
+	<span style="padding-left:1.2em;">
+        <!--<input type='checkbox' style='vertical-align:sub;' name='emn'checked=truevalue='1'> <span style='vertical-align:middle;'>Enable email notifications</span>-->
+    </span>
+      </div>
+      <div class="col-md-6">
+
+        <h2>Steam info</h2>
+
+        <div class="input-group input-group-lg">
+          <span class="input-group-addon">Trade URL
+            <span class="fa fa-question-circle" title="This url is needed for bots to send you trade requests. You will not be able to use many features without this set."></span>
+          </span>
+          <input type="text" class="form-control" name="tUrl" ng-model="user.trade_url">
+          <span class="input-group-addon btn-primary">
+            <a href="http://steamcommunity.com/profiles/{{user.steam_details.id}}/tradeoffers/privacy#create_new_url_btn"target="_BLANK">Get it</a>
+          </span>
+        </div>
+        <div class="input-group input-group-lg">
+          <span class="input-group-addon">Steam ID</span>
+          <input type="text" readonly="" class="form-control" ng-model="user.steam_details.id" id="steamid">
+        </div>
+        <div class="input-group input-group-lg">
+          <span class="input-group-addon">Referal Link</span>
+          <input type="text" readonly="" style="cursor:text" ng-model="user.referralLink" class="form-control">
+        </div>
+
+        <div class="input-group input-group-lg">
+          <span class="input-group-addon">Your Subscription</span>
+          <!--<div class="form-control" style="cursor:default">{{user.subscription.name}} ({{user.subscription.fee*100}}&percnt;)</div> VRATI FEE -->
+          <div class="form-control" style="cursor:default">{{user.subscription.name}} (0&percnt;)</div>
+          <span class="input-group-addon">No Expiration</span>
+        </div>
+        <!--<div class="input-group input-group-lg" id="apiInputGroup" style="display:none">
+          <span class="input-group-addon">API Key</span>
+          <input type="text" readonly="" style="cursor:default" id="apiBox" value="None" class="form-control">
+          <span class="input-group-addon">Queries Remaining: 1000</span>
+        </div>
+        <span class="btn input-group-addon request-api" id="api_request" onclick="get_api()">Request API Key</span>-->
+
+      </div>
+      <div class="col-md-12 update-info">
+        <button class="button" id="sellBtn" value="Update Info" ng-click="updateUserInfo()" ng-disabled="isRequestPending">Save changes</button>
+      </div>
+    </div>
+  </div>
+  <!-- /container -->
+</div>
+

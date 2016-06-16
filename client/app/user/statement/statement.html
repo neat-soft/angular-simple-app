@@ -1,0 +1,83 @@
+<div class="context-header container user-dashboard ">
+  <h1>Statement</h1>
+  <ul id="user-tabs" class="nav nav-tabs" role="tablist">
+  	<li><a ui-sref="portfolio" ui-sref-active="active"><i class="fa fa-user"></i> User Dashboard</a></a></li>
+    <li><a ui-sref="profile({id: user.steam_user_id})" ui-sref-active="active"><i class="fa fa-user-secret"></i> Profile</a></li>
+    <li><a ui-sref="settings" ui-sref-active="active"><i class="fa fa-cog"></i> Settings</a></li>
+    <li><a ui-sref="statement" ui-sref-active="active"><i class="fa fa-area-chart"></i> Statement</a></li>
+    <li><a ui-sref="withdrawals" ui-sref-active="active"><i class="fa fa-calculator"></i> Withdrawals</a></li>
+  </ul>
+</div>
+
+<div class="main-wrapper">
+  <div class="container statement-page">
+    <!-- Example row of columns -->
+    <div class="row">
+      <div class="col-md-12  ">
+        <div class="statement-summary">
+          <h2>Your sales and referral earnings</h2>
+          <table>
+            <thead>
+            <tr>
+              <th>
+                <h4 class="t-heading -size-xxs -weight-normal h-remove-margin h-text-align-left">Net earnings</h4>
+              </th>
+              <th>
+                <h4 class="t-heading -size-xxs -weight-normal h-remove-margin h-text-align-left">Items sold</h4>
+              </th>
+              <th>
+                <h4 class="t-heading -size-xxs -weight-normal h-remove-margin h-text-align-left">Items bought</h4>
+              </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td class="net-earnings" ng-class="{'red': vm.data.total < 0}">
+                {{vm.data.total | swMoney}}
+              </td>
+              <td class="items-sold">
+                {{vm.data.itemsSold}}
+              </td>
+              <td class="items-bought">
+                {{vm.data.itemsBought}}
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <table class="statement-main">
+          <thead>
+          <tr>
+            <th>Type</th>
+            <th>Order&nbsp;ID</th>
+            <th></th>
+            <th>Date</th>
+            <th>Item</th>
+            <th>Price</th>
+            <th>Seller</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr ng-class="{sell: statement.type === 'sold', buy: statement.type === 'bought'}" ng-repeat="statement in vm.data.statements">
+            <td>Item {{statement.type}}</td>
+            <td>{{statement.trade_id}}</td>
+            <td></td>
+            <td>{{statement.created_at | date}} </td>
+            <td>
+              <div>
+                {{statement.item_name}}
+              </div>
+            </td>
+            <td class="sitemp">{{statement.price | swMoney}}</td>
+            <td><a ui-sref="profile({id: statement.vendor.id})">{{statement.vendor.name}}</a></td>
+            <td>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<!-- Main jumbotron for a primary marketing message or call to action -->
+
+<div class="context-header container">
+  <div class="pro_title">
+    <img ng-src="{{vm.user.avatarmedium}}"/>
+    <div class="pro_info">
+      <h3>{{vm.user.displayName}}</h3>
+      <a target="_blank" ng-href="{{vm.user.profileurl}}" class="steamp"><span><i class="fa fa-steam"></i> Steam Profile</span></a>
+    </div>
+  </div>
+  <div class="pro_badges">
+    <sw-badges user="vm.user"></sw-badges>
+  </div>
+</div>
+
+<div class="main-wrapper profile">
+  <div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+      <div class="col-md-8  ">
+        <div class="deposit-cash-cont your-items" ng-if="vm.user.introduction">
+          <div ng-bind-html="vm.user.introduction"></div>
+          <div class="clear"></div>
+        </div>
+
+        <div class="your-items latest-items profilesell widget">
+          <h3>{{vm.user.displayName}}'s skins</h3>
+          <div class="alert alert-warning" ng-if="!vm.items || vm.items.length == 0">{{vm.user.displayName}} does not have any skins at the moment.</div>
+          <ul class="items tab-pane active" role="tabpanel" aria-labelledby="selling-item">
+            <li ng-repeat="item in vm.items" >
+              <sw-item item="item"></sw-item>
+            </li>
+          </ul>
+          <div class="clear"></div>
+        </div>
+
+      </div>
+
+     <!-- <div class="col-md-4 ">
+        <div class="widget current-c-dpage">
+          Comments here
+        </div>
+        &lt;!&ndash; Large modal &ndash;&gt;
+      </div>-->
+    </div>
+
+  </div>
+  <!-- /container -->
+</div>
+

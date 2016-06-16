@@ -1,0 +1,49 @@
+<div class="is-hidden--no-js search-facet-horizontal-form" data-view="searchFacetHorizontalForm">
+
+  <div class="inline-select-wrapper">
+    <div class="search-facet-header--inline-select-hori">
+      <i class="fa fa-sort-amount-desc"></i>
+    </div>
+
+    <div class="-border-top-none -border-radius-none inline-select ">
+      <label class="is-visually-hidden" for="sort">Sort by</label>
+      <select class="js-search-facet-sort-by" id="sort" name="sort" ng-model="vm.sortBy" ng-change="vm.sortItemsBy()">
+        <option selected="selected" value="-created_at">Sort by: Newest items</option>
+        <option value="user_price">Price: low to high</option>
+        <option value="-user_price">Price: high to low</option>
+      </select>
+    </div>
+
+  </div>
+
+  <div class="inline-select-wrapper">
+    <div class="search-facet-header--inline-select-hori">
+      <i class="fa fa-calendar"></i>
+    </div>
+
+    <div class="-border-top-none -border-radius-none inline-select ">
+      <label class="is-visually-hidden" for="date">Added</label>
+      <select class="js-search-facet-date-added" id="date" name="date" ng-model="vm.added" ng-change="vm.sortByDate()">
+        <option selected="selected" value="">Added: Any date</option>
+        <option value="this-year">In the last year</option>
+        <option value="this-month">In the last month</option>
+        <option value="this-week">In the last week</option>
+        <option value="this-day">In the last day</option>
+      </select>
+    </div>
+
+  </div>
+
+  <div class="search-facet-layout-switcher js-search-facet-layout-switcher">
+    <div class="btn-group">
+      <!--<a href="#" class="btn btn--group-item btn--color-transparent is-active" data-layout-switch="list">
+        <i class="fa fa-list"></i>
+      </a>-->
+
+      <a  class="btn btn--group-item btn--color-transparent is-active" data-layout-switch="grid">
+        <i class="fa fa-th"></i>
+      </a>
+
+    </div>
+  </div>
+</div>

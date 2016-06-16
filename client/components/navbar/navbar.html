@@ -1,0 +1,71 @@
+<div class="bnotice red" ng-hide="!isLoggedIn() || isTradeUrlSet()">
+	<div class="container">
+		<a ui-sref="settings">Your Trading URL hasn't been set. Please set it before requesting a trade<i class="fa fa-angle-double-right"></i></a>
+	</div>
+</div>
+<div class="bnotice" ng-if="swCart.getExpiresAt()">
+  <div class="container">
+    <a ui-sref="cart">Please checkout in the next <timer end-time="swCart.getExpiresAt()" finish-callback="swCart.onCartExpired()">&nbsp;{{minutes}}&nbsp;minutes,&nbsp;{{seconds}}&nbsp;seconds.</timer> <i class="fa fa-shopping-basket"></i></a>
+  </div>
+</div>
+<nav class="navbar navbar-inverse mainmenu">
+  <div class="container">
+
+    <div class="navbar-top">
+      <div class="menu-main-container">
+        <div class="menu-menu-1-container">
+          <ul class="nav navbar-nav">
+            <li id="menu-item-672" class="menu-item"><a target="_blank" href="http://support.csgosm.com">How it works</a></li>
+            <li id="menu-item-668" class="menu-item"><a target="_blank" href="https://www.reddit.com/r/csgosm/" >Community</a></li>
+            <li id="menu-item-669" class="menu-item"><a target="_blank" href="http://support.csgosm.com/index.php?p=contact-us">Contact</a></li>
+            <li id="menu-item-670" class="menu-item sell-a-skin-tm"><button ng-click="sellASkinClickAction()"><i class="fa fa-usd"></i> Sell a Skin</button>
+          </ul>
+        </div>
+      </div>
+      <div class="header-right">
+        <a class="loginl" ng-if="!isLoggedIn()" ng-click="authenticate()"><img class="steamloginb" src="../assets/images/steam_signin.png"></a>
+        <div class="user-hinfo" ng-if="isLoggedIn()">
+          <img ng-src="{{user.steam_details.avatar}}" class="havatar" />
+          <a class="user-hname">{{user.steam_details.personaname}}</a>
+          <a class="user-hearnings">&nbsp;{{user.amount.available_amount || 0 | swMoney}}</a>
+
+          <div class="clear"></div>
+          <div class="mdropdown">
+            <ul>
+              <li><a ui-sref="profile({id: user.steam_user_id})">Profile <i class="fa fa-user-secret"></i></a></li>
+              <li><a ui-sref="portfolio">User Dashboard <i class="fa fa-user"></i></a></li>
+              <li><a ui-sref="deposit">Make a deposit <i class="fa fa-usd"></i></a></li>
+              <li><a ui-sref="settings">Settings <i class="fa fa-cog"></i></a></li>
+              <li><a ui-sref="statement">Statement <i class="fa fa-area-chart"></i></a></li>
+              <li><a ui-sref="withdrawals">Withdrawals <i class="fa fa-calculator"></i></a></li>
+              <li><a ui-sref="logout">Logout <i class="fa fa-sign-out"></i></a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="user-extras">
+          <sw-cart-summary></sw-cart-summary>
+        </div>
+
+        <div class="clear"></div>
+      </div>
+
+      <div class="clear"></div>
+    </div>
+
+    <div class="navbar-header">
+      <a class="navbar-brand" ui-sref="main"><img src="/assets/images/logo.png" /></a>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false" aria-controls="navbar">
+      	<b>MENU</b>
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+    </div>
+
+
+
+  </div>
+</nav>
